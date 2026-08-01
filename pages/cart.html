@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitPro Market | Cart</title>
+
+  <meta name="description" content="View and manage items added to your FitPro Market shopping cart.">
+  <meta property="og:title" content="FitPro Market Cart">
+  <meta property="og:description" content="Manage your selected fitness products.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://abhishekpeerthy.github.io/FitPro/pages/cart.html">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
+  <header>
+    <div class="container navbar">
+      <a href="../index.html" class="site-title" aria-label="FitPro Market">
+        <span aria-hidden="true">F</span>FitPro Market
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list" id="main-navigation">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html" aria-current="page">Cart</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-indicator" aria-label="Open cart">
+          <span id="cart-count" aria-live="polite">0</span> Cart
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" id="main-content">
+    <section class="cart" role="region" aria-labelledby="cart-heading">
+      <div class="section-title">
+        <div>
+          <p class="section-highlight">Your Cart</p>
+          <h2 id="cart-heading">Review your selected items</h2>
+        </div>
+        <p>Adjust quantities or remove items before checkout.</p>
+      </div>
+
+      <div class="cart-page">
+        <!-- CART ITEMS -->
+        <div class="cart-items" role="list"></div>
+
+        <!-- CART SUMMARY -->
+        <div class="cart-summary tilt">
+          <h3>Order Summary</h3>
+          <p id="cart-summary-text">Your cart is currently empty.</p>
+
+          <div class="summary-row">
+            <span>Total:</span>
+            <strong id="cart-total">£0.00</strong>
+          </div>
+
+          <button class="checkout" id="checkoutButton">Proceed to Checkout</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- POP-UP MODAL -->
+  <div class="popup-modal" aria-hidden="true">
+    <div class="popup-content" role="dialog" aria-modal="true">
+      <button class="popup-close" data-action="close-detail">×</button>
+      <div class="popup-body"></div>
+    </div>
+  </div>
+
+  <!-- REMOVE CONFIRMATION MODAL -->
+  <div class="confirm-modal" aria-hidden="true">
+    <div class="confirm-content tilt" role="dialog" aria-modal="true">
+      <h3>Remove Item</h3>
+      <p class="confirm-message">Are you sure you want to remove this item from your basket?</p>
+
+      <div class="confirm-actions">
+        <button class="button confirm-remove">Remove Item</button>
+        <button class="button confirm-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="site-title" aria-label="FitPro Market">
+          <span aria-hidden="true">F</span>FitPro Market
+        </a>
+        <p>Premium health and fitness equipment and accessories, delivered in a fast and accessible front-end website.</p>
+      </div>
+
+      <div>
+        <h3>Quick links</h3>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="products.html">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

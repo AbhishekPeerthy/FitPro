@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitPro Market | Products</title>
+
+  <meta name="description" content="Browse a variety of health and fitness products and add them to your cart.">
+  <meta property="og:title" content="FitPro Market Products">
+  <meta property="og:description" content="Browse premium health and fitness products.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://abhishekpeerthy.github.io/FitPro/pages/products.html">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
+  <header>
+    <div class="container navbar">
+      <a href="../index.html" class="site-title" aria-label="FitPro Market">
+        <span aria-hidden="true">F</span>FitPro Market
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list" id="main-navigation">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="products.html" aria-current="page">Products</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="cart.html" class="cart-indicator" aria-label="Open cart">
+          <span id="cart-count" aria-live="polite">0</span> Cart
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="container" id="main-content">
+    <section class="products" role="region" aria-labelledby="products-heading">
+      <div class="section-title">
+        <div>
+          <p class="section-highlight">Product Collection</p>
+          <h2 id="products-heading">Browse our premium health and fitness catalogue</h2>
+        </div>
+        <p>Each product includes category, pricing, detailed information, and add-to-cart support.</p>
+      </div>
+
+      <!-- FILTERS + SEARCH + SORT -->
+      <div class="product-filters">
+        <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products">
+
+        <div class="filter-buttons" aria-label="Filter by category">
+          <button data-filter="all" class="active">All</button>
+          <button data-filter="Strength">Strength</button>
+          <button data-filter="Cardio">Cardio</button>
+          <button data-filter="Recovery">Recovery</button>
+          <button data-filter="Accessories">Accessories</button>
+          <button data-filter="Nutrition">Nutrition</button>
+          <button data-filter="Flexibility">Flexibility</button>
+          <button data-filter="Wearables">Wearables</button>
+        </div>
+
+        <div class="sort-control">
+          <label for="sortProducts">Sort:</label>
+          <select id="sortProducts">
+            <option value="default">Default</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div id="products-grid" class="products-grid" role="list"></div>
+    </section>
+
+    <!-- RECENTLY VIEWED -->
+    <section class="recently-viewed" role="region" aria-labelledby="recently-heading">
+      <div class="section-title">
+        <div>
+          <p class="section-highlight">Recently Viewed</p>
+          <h2 id="recently-heading">Continue where you left off</h2>
+        </div>
+        <p>Quick access to products you’ve recently explored.</p>
+      </div>
+
+      <div id="recently-viewed" class="products-grid"></div>
+    </section>
+  </main>
+
+  <!-- POP-UP MODAL -->
+  <div class="popup-modal" aria-hidden="true">
+    <div class="popup-content" role="dialog" aria-modal="true">
+      <button class="popup-close" data-action="close-detail">×</button>
+      <div class="popup-body"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="site-title" aria-label="FitPro Market">
+          <span aria-hidden="true">F</span>FitPro Market
+        </a>
+        <p>Premium health and fitness equipment and accessories, delivered in a fast and accessible front-end website.</p>
+      </div>
+
+      <div>
+        <h3>Quick links</h3>
+        <ul class="footer-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html">Cart</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>
