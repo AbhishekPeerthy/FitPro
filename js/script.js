@@ -9,7 +9,7 @@ function getImagePath(fileName) {
 
 /* PRODUCT LIST */
 const products = [
-  { id: 'elite-trainer', name: 'Elite Trainer Treadmill', category: 'Cardio', price: 1249.99, image: 'elite-trainer.jpg', description: 'A premium treadmill with adaptive incline, workout tracking, and whisper-quiet motor performance.' },
+    { id: 'elite-trainer', name: 'Elite Trainer Treadmill', category: 'Cardio', price: 1249.99, image: 'elite-trainer.jpg', description: 'A premium treadmill with adaptive incline, workout tracking, and whisper-quiet motor performance.' },
   { id: 'power-rack', name: 'Precision Power Rack', category: 'Strength', price: 899.99, image: 'power-rack.jpg', description: 'Heavy-duty power rack designed for serious lifters, with safety catches and adjustable attachments.' },
   { id: 'smart-bike', name: 'Smart Exercise Bike', category: 'Cardio', price: 999.99, image: 'smart-bike.jpg', description: 'Interactive bike with integrated coaching programs, performance metrics, and ergonomic comfort.' },
   { id: 'recovery-mat', name: 'Recovery Foam Mat', category: 'Recovery', price: 59.99, image: 'recovery-mat.jpg', description: 'Premium foam mat with supportive cushioning for stretching, yoga, and cool-down recovery routines.' },
@@ -103,6 +103,7 @@ function renderProducts(list = products) {
   list.forEach(product => {
     const card = document.createElement('article');
     card.className = 'product-card tilt';
+    card.setAttribute('tabindex', '0');
 
     card.innerHTML = `
       <img src="${getImagePath(product.image)}" alt="${product.name}" loading="lazy">
@@ -131,6 +132,7 @@ function renderFeaturedProducts() {
   products.slice(0, 4).forEach(product => {
     const card = document.createElement('article');
     card.className = 'product-card tilt';
+    card.setAttribute('tabindex', '0');
 
     card.innerHTML = `
       <img src="${getImagePath(product.image)}" alt="${product.name}" loading="lazy">
@@ -159,13 +161,14 @@ function renderCartPage() {
   list.innerHTML = '';
 
   if (cart.length === 0) {
-    list.innerHTML = `<div class="product-card"><h3>Your cart is empty.</h3></div>`;
+    list.innerHTML = `<div class="product-card tilt" tabindex="0"><h3>Your cart is empty.</h3></div>`;
   }
 
   cart.forEach(item => {
     const p = findProduct(item.id);
     const card = document.createElement('article');
     card.className = 'cart-card tilt';
+    card.setAttribute('tabindex', '0');
 
     card.innerHTML = `
       <img src="${getImagePath(p.image)}" alt="${p.name}">
@@ -175,9 +178,9 @@ function renderCartPage() {
         <p class="price">£${(p.price * item.quantity).toFixed(2)}</p>
 
         <div class="item-controls">
-          <button data-action="decrease" data-product-id="${p.id}">-</button>
+          <button data-action="decrease" data-product-id="${p.id}" aria-label="Decrease quantity">-</button>
           <span>${item.quantity}</span>
-          <button data-action="increase" data-product-id="${p.id}">+</button>
+          <button data-action="increase" data-product-id="${p.id}" aria-label="Increase quantity">+</button>
           <button data-action="remove" data-product-id="${p.id}">Remove</button>
         </div>
       </div>
@@ -193,6 +196,29 @@ function renderCartPage() {
   if (summaryEl) summaryEl.textContent = cart.length
     ? `${cart.length} item(s) in your cart`
     : 'Your cart is currently empty.';
+}
+
+/* FOCUS TRAP FOR MODALS */
+function trapFocus(modal) {
+  const focusable = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  if (!focusable.length) return;
+
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+
+  modal.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  });
 }
 
 /* POP-UP MODAL */
@@ -214,6 +240,10 @@ function renderProductDetail(productId) {
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
 
+  const dialog = modal.querySelector('.popup-content');
+  trapFocus(dialog);
+  dialog.querySelector('button, [href], input')?.focus();
+
   trackRecentlyViewed(productId);
   renderRecentlyViewed();
 }
@@ -232,6 +262,8 @@ function showToast(message) {
   if (!toast) {
     toast = document.createElement('div');
     toast.className = 'toast-notice';
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
     document.body.appendChild(toast);
   }
 
@@ -259,6 +291,9 @@ function openRemoveModal(productName, productId) {
   modal.classList.remove('closing');
   modal.classList.add('active');
   modal.setAttribute('aria-hidden', 'false');
+
+  trapFocus(modal.querySelector('.confirm-content'));
+  modal.querySelector('.confirm-remove')?.focus();
 }
 
 function closeRemoveModal() {
@@ -333,15 +368,40 @@ function initContactForm() {
   const email = form.querySelector('#email');
   const msg = form.querySelector('#message');
   const feedback = form.querySelector('.form-feedback');
+  const nameError = document.getElementById('name-error');
+  const emailError = document.getElementById('email-error');
+  const messageError = document.getElementById('message-error');
+
+  if (feedback) {
+    feedback.setAttribute('aria-live', 'polite');
+  }
 
   form.addEventListener('submit', e => {
     e.preventDefault();
     let errors = [];
 
-    if (!name.value.trim()) errors.push('Please enter your name.');
-    if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value))
+    name.removeAttribute('aria-invalid');
+    email.removeAttribute('aria-invalid');
+    msg.removeAttribute('aria-invalid');
+    if (nameError) nameError.textContent = '';
+    if (emailError) emailError.textContent = '';
+    if (messageError) messageError.textContent = '';
+
+    if (!name.value.trim()) {
+      errors.push('Please enter your name.');
+      name.setAttribute('aria-invalid', 'true');
+      if (nameError) nameError.textContent = 'Please enter your name.';
+    }
+    if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
       errors.push('Please enter a valid email address.');
-    if (!msg.value.trim()) errors.push('Please enter a message.');
+      email.setAttribute('aria-invalid', 'true');
+      if (emailError) emailError.textContent = 'Please enter a valid email address.';
+    }
+    if (!msg.value.trim()) {
+      errors.push('Please enter a message.');
+      msg.setAttribute('aria-invalid', 'true');
+      if (messageError) messageError.textContent = 'Please enter a message.';
+    }
 
     if (errors.length) {
       feedback.textContent = errors.join(' ');
@@ -371,7 +431,7 @@ document.addEventListener('click', e => {
 
 /* 3D TILT EFFECT (throttled) */
 function initTiltEffects() {
-  const tiltCards = document.querySelectorAll('.product-card, .info-card, .cart-card');
+  const tiltCards = document.querySelectorAll('.product-card, .info-card, .cart-card, .confirm-content, .about-summary');
 
   tiltCards.forEach(card => {
     card.classList.add('tilt');
@@ -398,6 +458,11 @@ function initTiltEffects() {
     card.addEventListener('mousemove', handleMove);
 
     card.addEventListener('mouseleave', () => {
+      card.style.setProperty('--tilt-x', `0deg`);
+      card.style.setProperty('--tilt-y', `0deg`);
+    });
+
+    card.addEventListener('focus', () => {
       card.style.setProperty('--tilt-x', `0deg`);
       card.style.setProperty('--tilt-y', `0deg`);
     });
@@ -493,6 +558,15 @@ function initIntroVideo() {
     video.currentTime = 0;
     video.muted = true;
   });
+
+  [playBtn, pauseBtn, replayBtn].forEach(btn => {
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        btn.click();
+      }
+    });
+  });
 }
 
 /* PRODUCT FILTERING + SEARCH + SORT */
@@ -563,6 +637,7 @@ function renderRecentlyViewed() {
 
     const card = document.createElement('article');
     card.className = 'product-card tilt';
+    card.setAttribute('tabindex', '0');
 
     card.innerHTML = `
       <img src="${getImagePath(p.image)}" alt="${p.name}" loading="lazy">
@@ -619,6 +694,8 @@ function initCheckoutForm() {
 
   if (!form || !feedback || !modal) return;
 
+  feedback.setAttribute('aria-live', 'polite');
+
   form.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -626,11 +703,32 @@ function initCheckoutForm() {
     const email = document.getElementById('checkout-email');
     const address = document.getElementById('checkout-address');
 
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const addressError = document.getElementById('address-error');
+
     let errors = [];
-    if (!name.value.trim()) errors.push('Please enter your name.');
-    if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value))
+
+    [name, email, address].forEach(input => input.removeAttribute('aria-invalid'));
+    if (nameError) nameError.textContent = '';
+    if (emailError) emailError.textContent = '';
+    if (addressError) addressError.textContent = '';
+
+    if (!name.value.trim()) {
+      errors.push('Please enter your name.');
+      name.setAttribute('aria-invalid', 'true');
+      if (nameError) nameError.textContent = 'Please enter your name.';
+    }
+    if (!email.value.trim() || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) {
       errors.push('Please enter a valid email address.');
-    if (!address.value.trim()) errors.push('Please enter your delivery address.');
+      email.setAttribute('aria-invalid', 'true');
+      if (emailError) emailError.textContent = 'Please enter a valid email address.';
+    }
+    if (!address.value.trim()) {
+      errors.push('Please enter your delivery address.');
+      address.setAttribute('aria-invalid', 'true');
+      if (addressError) addressError.textContent = 'Please enter your delivery address.';
+    }
 
     if (errors.length) {
       feedback.textContent = errors.join(' ');
@@ -648,6 +746,8 @@ function initCheckoutForm() {
 
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
+    trapFocus(modal.querySelector('.confirm-content'));
+    modal.querySelector('.button')?.focus();
   });
 }
 

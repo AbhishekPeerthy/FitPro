@@ -5,7 +5,7 @@
   --surface-light: #24304a;
 
   --text: #ffffff;
-  --text-muted: #c7d2e0;
+  --text-muted: #b8c4d4;
 
   --accent: #4ade80;
   --accent-dark: #16a34a;
@@ -44,6 +44,19 @@ img { max-width: 100%; display: block; }
   outline-offset: 2px;
 }
 
+/* SR-ONLY (VISUALLY HIDDEN) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* BUTTONS - GENERAL SITE BUTTONS */
 button,
 a.button {
@@ -56,12 +69,13 @@ a.button {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   text-decoration: none;
-  color: #fff;
+  color: #0a0f1a;
   background: linear-gradient(135deg, var(--accent), var(--accent-dark));
   box-shadow: 0 18px 35px rgba(102, 217, 255, 0.18);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   position: relative;
   overflow: hidden;
+  font-weight: 600;
 }
 button:hover,
 a.button:hover {
@@ -222,14 +236,14 @@ header {
   position: relative;
 }
 
-/* Hide controls until hover */
 .video-controls {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-}
-
-.intro-video-container:hover .video-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  z-index: 30;
   opacity: 1;
   pointer-events: auto;
 }
@@ -270,30 +284,28 @@ header {
 }
 
 /* EMOJI VIDEO BUTTONS */
-.video-controls {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  display: flex;
-  gap: 8px;
-  align-items: center;
-  z-index: 30;
-}
-
 .raw-emoji-btn {
   background: transparent;
   border: none;
-  font-size: 16px;
+  font-size: 1.5rem;
   cursor: pointer;
   color: #fff;
-  padding: 0;
+  padding: 12px;
   margin: 0;
   line-height: 1;
   text-shadow: 0 0 4px #00eaff;
+  min-width: 48px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
-
 .raw-emoji-btn:hover {
   text-shadow: 0 0 6px #00eaff;
+}
+.raw-emoji-btn:focus-visible {
+  outline: 2px solid #00eaff;
+  outline-offset: 4px;
 }
 
 /* Sliders */
@@ -494,6 +506,9 @@ textarea {
   min-height: 180px;
   resize: vertical;
 }
+.form-feedback {
+  min-height: 1.5rem;
+}
 
 /* FOOTER */
 footer {
@@ -511,6 +526,24 @@ footer {
 }
 .footer-links a:hover {
   color: var(--accent);
+}
+
+/* PRODUCT FILTERS */
+.filter-buttons button {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+}
+.sort-control label {
+  color: #e5eaf2;
+}
+
+/* CART ITEM CONTROLS */
+.item-controls button {
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0.5rem;
 }
 
 /* RESPONSIVE */
@@ -531,7 +564,6 @@ footer {
     padding: 1.25rem;
   }
 
-  /* VIDEO CONTROLS — SMALLER EMOJI ON MOBILE */
   .video-controls {
     flex-direction: column;
     align-items: flex-start;
@@ -541,8 +573,7 @@ footer {
   }
 
   .raw-emoji-btn {
-    font-size: 14px;
-    text-shadow: 0 0 3px #00eaff;
+    font-size: 1.25rem;
   }
 
   .video-slider,

@@ -17,7 +17,6 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
   <header>
     <div class="container navbar">
       <a href="../index.html" class="site-title" aria-label="FitPro Market">
@@ -42,9 +41,10 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container" id="main-content">
-    <section class="products" role="region" aria-labelledby="products-heading">
+  <main class="container" id="main-content" tabindex="-1">
+    <h1 class="sr-only">FitPro Market Products</h1>
+
+    <section class="products" aria-labelledby="products-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">Product Collection</p>
@@ -53,9 +53,14 @@
         <p>Each product includes category, pricing, detailed information, and add-to-cart support.</p>
       </div>
 
-      <!-- FILTERS + SEARCH + SORT -->
-      <div class="product-filters">
-        <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products">
+      <div class="product-filters" aria-label="Product filters">
+        <label for="searchInput" class="sr-only">Search products</label>
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search products..."
+          aria-label="Search products"
+        >
 
         <div class="filter-buttons" aria-label="Filter by category">
           <button data-filter="all" class="active">All</button>
@@ -69,7 +74,7 @@
         </div>
 
         <div class="sort-control">
-          <label for="sortProducts">Sort:</label>
+          <label for="sortProducts">Sort products</label>
           <select id="sortProducts">
             <option value="default">Default</option>
             <option value="low">Price: Low to High</option>
@@ -78,12 +83,10 @@
         </div>
       </div>
 
-      <!-- PRODUCT GRID -->
       <div id="products-grid" class="products-grid" role="list"></div>
     </section>
 
-    <!-- RECENTLY VIEWED -->
-    <section class="recently-viewed" role="region" aria-labelledby="recently-heading">
+    <section class="recently-viewed" aria-labelledby="recently-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">Recently Viewed</p>
@@ -96,15 +99,18 @@
     </section>
   </main>
 
-  <!-- POP-UP MODAL -->
   <div class="popup-modal" aria-hidden="true">
-    <div class="popup-content" role="dialog" aria-modal="true">
-      <button class="popup-close" data-action="close-detail">×</button>
-      <div class="popup-body"></div>
+    <div class="popup-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="product-detail-heading"
+         aria-describedby="product-detail-body">
+      <button class="popup-close" aria-label="Close dialog" data-action="close-detail">×</button>
+      <h2 id="product-detail-heading" class="sr-only">Product details</h2>
+      <div id="product-detail-body" class="popup-body"></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand">

@@ -17,7 +17,6 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
   <header>
     <div class="container navbar">
       <a href="index.html" class="site-title" aria-label="FitPro Market">
@@ -42,14 +41,14 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container" id="main-content">
-    <!-- HERO SECTION -->
-    <section class="hero" role="region" aria-labelledby="hero-heading">
+  <main class="container" id="main-content" tabindex="-1">
+    <h1 class="sr-only">FitPro Market Home</h1>
+
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="hero-grid">
         <div class="hero-copy">
           <p class="section-highlight">High-end Health & Fitness Store</p>
-          <h1 id="hero-heading">Elevate your performance with premium health and fitness essentials.</h1>
+          <h2 id="hero-heading">Elevate your performance with premium health and fitness essentials.</h2>
           <p>Find premium fitness gear, recovery essentials, and performance wear backed by a polished, responsive front-end experience.</p>
 
           <div class="hero-actions">
@@ -59,14 +58,13 @@
         </div>
 
         <div class="hero-visual">
-          <div class="hero-card tilt">
-            <h2>Fast delivery</h2>
+          <div class="hero-card tilt" tabindex="0">
+            <h3>Fast delivery</h3>
             <p>Available inventory, quick updates, and an easy checkout flow on every screen size.</p>
           </div>
         </div>
       </div>
 
-      <!-- INTRO VIDEO -->
       <div class="intro-video-container">
         <video
           id="introVideo"
@@ -75,24 +73,28 @@
           autoplay
           playsinline
           preload="auto"
-        ></video>
+        >
+          <track kind="captions" src="media/videos/captions.vtt" srclang="en" label="English">
+        </video>
 
-        <div class="video-controls">
+        <div class="video-controls" aria-label="Video controls">
           <button id="playBtn" class="raw-emoji-btn" aria-label="Play video">▶</button>
           <button id="pauseBtn" class="raw-emoji-btn" aria-label="Pause video">❚❚</button>
           <button id="replayBtn" class="raw-emoji-btn" aria-label="Replay video">↺</button>
           <button id="muteToggle" class="raw-emoji-btn" aria-label="Mute video">🔇</button>
 
-          <input id="volumeSlider" type="range" min="0" max="1" step="0.01" class="video-slider">
-          <input id="timelineBar" type="range" min="0" max="100" value="0" class="timeline-slider">
+          <label for="volumeSlider" class="sr-only">Volume</label>
+          <input id="volumeSlider" type="range" min="0" max="1" step="0.01" class="video-slider" aria-label="Volume">
+
+          <label for="timelineBar" class="sr-only">Video timeline</label>
+          <input id="timelineBar" type="range" min="0" max="100" value="0" class="timeline-slider" aria-label="Video timeline">
         </div>
 
         <button id="skipIntroBtn" class="skip-intro">Skip Intro</button>
       </div>
     </section>
 
-    <!-- FEATURED PRODUCTS -->
-    <section class="featured" role="region" aria-labelledby="featured-heading">
+    <section class="featured" aria-labelledby="featured-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">Featured Gear</p>
@@ -104,8 +106,7 @@
       <div id="featured-products" class="products-grid"></div>
     </section>
 
-    <!-- RECENTLY VIEWED -->
-    <section class="recently-viewed" role="region" aria-labelledby="recently-heading">
+    <section class="recently-viewed" aria-labelledby="recently-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">Recently Viewed</p>
@@ -118,15 +119,18 @@
     </section>
   </main>
 
-  <!-- POP-UP MODAL -->
   <div class="popup-modal" aria-hidden="true">
-    <div class="popup-content" role="dialog" aria-modal="true">
-      <button class="popup-close" data-action="close-detail">×</button>
-      <div class="popup-body"></div>
+    <div class="popup-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="product-detail-heading"
+         aria-describedby="product-detail-body">
+      <button class="popup-close" aria-label="Close dialog" data-action="close-detail">×</button>
+      <h2 id="product-detail-heading" class="sr-only">Product details</h2>
+      <div id="product-detail-body" class="popup-body"></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand">

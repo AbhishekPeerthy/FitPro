@@ -17,7 +17,6 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
   <header>
     <div class="container navbar">
       <a href="../index.html" class="site-title" aria-label="FitPro Market">
@@ -42,9 +41,10 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container" id="main-content">
-    <section class="about" role="region" aria-labelledby="about-heading">
+  <main class="container" id="main-content" tabindex="-1">
+    <h1 class="sr-only">About FitPro Market</h1>
+
+    <section class="about" aria-labelledby="about-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">About Us</p>
@@ -53,7 +53,7 @@
         <p>FitPro Market is built to deliver a polished, responsive, and accessible e-commerce experience for fitness enthusiasts.</p>
       </div>
 
-      <div class="about-summary tilt">
+      <div class="about-summary tilt" tabindex="0">
         <p>
           FitPro Market was created with a simple goal: to make premium health and fitness products accessible through a clean, modern, and user-friendly online experience.
           Our catalogue includes strength equipment, cardio machines, recovery tools, accessories, and nutrition essentials — all carefully curated to support your training journey.
@@ -70,17 +70,17 @@
       </div>
 
       <div class="overview-grid">
-        <article class="info-card tilt">
+        <article class="info-card tilt" tabindex="0">
           <h3>Our Vision</h3>
           <p>To provide a modern, accessible, and high-performance online store for fitness enthusiasts worldwide.</p>
         </article>
 
-        <article class="info-card tilt">
+        <article class="info-card tilt" tabindex="0">
           <h3>Our Values</h3>
           <p>Quality, transparency, accessibility, and user-focused design.</p>
         </article>
 
-        <article class="info-card tilt">
+        <article class="info-card tilt" tabindex="0">
           <h3>Our Commitment</h3>
           <p>We ensure every product is clearly presented with accurate details, pricing, and imagery.</p>
         </article>
@@ -88,15 +88,18 @@
     </section>
   </main>
 
-  <!-- POP-UP MODAL -->
   <div class="popup-modal" aria-hidden="true">
-    <div class="popup-content" role="dialog" aria-modal="true">
-      <button class="popup-close" data-action="close-detail">×</button>
-      <div class="popup-body"></div>
+    <div class="popup-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="product-detail-heading"
+         aria-describedby="product-detail-body">
+      <button class="popup-close" aria-label="Close dialog" data-action="close-detail">×</button>
+      <h2 id="product-detail-heading" class="sr-only">Product details</h2>
+      <div id="product-detail-body" class="popup-body"></div>
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand">

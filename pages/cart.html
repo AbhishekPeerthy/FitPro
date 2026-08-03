@@ -17,7 +17,6 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
   <header>
     <div class="container navbar">
       <a href="../index.html" class="site-title" aria-label="FitPro Market">
@@ -42,9 +41,10 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container" id="main-content">
-    <section class="cart" role="region" aria-labelledby="cart-heading">
+  <main class="container" id="main-content" tabindex="-1">
+    <h1 class="sr-only">Your FitPro Market Cart</h1>
+
+    <section class="cart" aria-labelledby="cart-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">Your Cart</p>
@@ -54,11 +54,9 @@
       </div>
 
       <div class="cart-page">
-        <!-- CART ITEMS -->
         <div class="cart-items" role="list"></div>
 
-        <!-- CART SUMMARY -->
-        <div class="cart-summary tilt">
+        <aside class="cart-summary tilt" tabindex="0" aria-label="Order summary">
           <h3>Order Summary</h3>
           <p id="cart-summary-text">Your cart is currently empty.</p>
 
@@ -67,25 +65,32 @@
             <strong id="cart-total">£0.00</strong>
           </div>
 
-          <button class="checkout" id="checkoutButton">Proceed to Checkout</button>
-        </div>
+          <button class="checkout button" id="checkoutButton">Proceed to Checkout</button>
+        </aside>
       </div>
     </section>
   </main>
 
-  <!-- POP-UP MODAL -->
   <div class="popup-modal" aria-hidden="true">
-    <div class="popup-content" role="dialog" aria-modal="true">
-      <button class="popup-close" data-action="close-detail">×</button>
-      <div class="popup-body"></div>
+    <div class="popup-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="product-detail-heading"
+         aria-describedby="product-detail-body">
+      <button class="popup-close" aria-label="Close dialog" data-action="close-detail">×</button>
+      <h2 id="product-detail-heading" class="sr-only">Product details</h2>
+      <div id="product-detail-body" class="popup-body"></div>
     </div>
   </div>
 
-  <!-- REMOVE CONFIRMATION MODAL -->
   <div class="confirm-modal" aria-hidden="true">
-    <div class="confirm-content tilt" role="dialog" aria-modal="true">
-      <h3>Remove Item</h3>
-      <p class="confirm-message">Are you sure you want to remove this item from your basket?</p>
+    <div class="confirm-content tilt"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="remove-heading"
+         aria-describedby="remove-message">
+      <h3 id="remove-heading">Remove Item</h3>
+      <p class="confirm-message" id="remove-message">Are you sure you want to remove this item from your basket?</p>
 
       <div class="confirm-actions">
         <button class="button confirm-remove">Remove Item</button>
@@ -94,7 +99,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand">

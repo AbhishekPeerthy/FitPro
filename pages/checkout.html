@@ -17,7 +17,6 @@
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- HEADER (RESTORED ORIGINAL LAYOUT) -->
   <header>
     <div class="container navbar">
       <a href="../index.html" class="site-title" aria-label="FitPro Market">
@@ -42,9 +41,10 @@
     </div>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="container" id="main-content">
-    <section class="checkout" role="region" aria-labelledby="checkout-heading">
+  <main class="container" id="main-content" tabindex="-1">
+    <h1 class="sr-only">FitPro Market Checkout</h1>
+
+    <section class="checkout" aria-labelledby="checkout-heading">
       <div class="section-title">
         <div>
           <p class="section-highlight">Checkout</p>
@@ -54,8 +54,7 @@
       </div>
 
       <div class="checkout-grid">
-        <!-- ORDER SUMMARY -->
-        <div class="checkout-summary">
+        <div class="checkout-summary" aria-label="Order summary">
           <h3>Order Summary</h3>
           <div id="checkout-items"></div>
 
@@ -65,23 +64,42 @@
           </div>
         </div>
 
-        <!-- CHECKOUT FORM -->
-        <form id="checkout-form" class="checkout-form">
+        <form id="checkout-form" class="checkout-form" novalidate>
           <h3>Your Details</h3>
 
           <div class="field-group">
             <label for="checkout-name">Full Name <span class="required">*</span></label>
-            <input type="text" id="checkout-name" name="checkout-name" placeholder="Enter your full name">
+            <input
+              type="text"
+              id="checkout-name"
+              name="checkout-name"
+              placeholder="Enter your full name"
+              aria-describedby="name-error"
+            >
+            <span id="name-error" class="sr-only" aria-live="polite"></span>
           </div>
 
           <div class="field-group">
             <label for="checkout-email">Email Address <span class="required">*</span></label>
-            <input type="email" id="checkout-email" name="checkout-email" placeholder="Enter your email">
+            <input
+              type="email"
+              id="checkout-email"
+              name="checkout-email"
+              placeholder="Enter your email"
+              aria-describedby="email-error"
+            >
+            <span id="email-error" class="sr-only" aria-live="polite"></span>
           </div>
 
           <div class="field-group">
             <label for="checkout-address">Delivery Address <span class="required">*</span></label>
-            <textarea id="checkout-address" name="checkout-address" placeholder="Enter your delivery address"></textarea>
+            <textarea
+              id="checkout-address"
+              name="checkout-address"
+              placeholder="Enter your delivery address"
+              aria-describedby="address-error"
+            ></textarea>
+            <span id="address-error" class="sr-only" aria-live="polite"></span>
           </div>
 
           <p class="form-note">This is a demonstration checkout. No real payment is processed.</p>
@@ -93,11 +111,14 @@
     </section>
   </main>
 
-  <!-- ORDER CONFIRMATION MODAL -->
   <div class="confirm-modal" aria-hidden="true">
-    <div class="confirm-content tilt" role="dialog" aria-modal="true">
-      <h3>Order Placed</h3>
-      <p class="confirm-message">Thank you! Your order has been placed in this demo experience.</p>
+    <div class="confirm-content tilt"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="order-heading"
+         aria-describedby="order-message">
+      <h3 id="order-heading">Order Placed</h3>
+      <p class="confirm-message" id="order-message">Thank you! Your order has been placed in this demo experience.</p>
 
       <div class="confirm-actions">
         <a href="../index.html" class="button">Return to Home</a>
@@ -106,7 +127,6 @@
     </div>
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <div class="container footer-grid">
       <div class="footer-brand">
