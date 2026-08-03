@@ -155,7 +155,7 @@ This creates a premium, app-like interaction.
 
 Clone the project and open `index.html` in any modern browser.
 
-git clone <https://abhishekpeerthy.github.io/FitPro/index.html>
+git clone <https://github.com/abhishekpeerthy/FitPro>
 
 No build tools or dependencies required.
 
