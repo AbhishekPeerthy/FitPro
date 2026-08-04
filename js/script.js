@@ -10,26 +10,26 @@ function getImagePath(fileName) {
 /* PRODUCT LIST */
 const products = [
     { id: 'elite-trainer', name: 'Elite Trainer Treadmill', category: 'Cardio', price: 1249.99, image: 'elite-trainer.jpg', description: 'A premium treadmill with adaptive incline, workout tracking, and whisper-quiet motor performance.' },
-  { id: 'power-rack', name: 'Precision Power Rack', category: 'Strength', price: 899.99, image: 'power-rack.jpg', description: 'Heavy-duty power rack designed for serious lifters, with safety catches and adjustable attachments.' },
-  { id: 'smart-bike', name: 'Smart Exercise Bike', category: 'Cardio', price: 999.99, image: 'smart-bike.jpg', description: 'Interactive bike with integrated coaching programs, performance metrics, and ergonomic comfort.' },
-  { id: 'recovery-mat', name: 'Recovery Foam Mat', category: 'Recovery', price: 59.99, image: 'recovery-mat.jpg', description: 'Premium foam mat with supportive cushioning for stretching, yoga, and cool-down recovery routines.' },
-  { id: 'nutrition-kit', name: 'Nutrition Starter Kit', category: 'Nutrition', price: 74.99, image: 'nutrition-kit.jpg', description: 'A curated set of premium supplements to support energy, recovery, and sustained performance.' },
-  { id: 'velocity-weights', name: 'Velocity Dumbbells', category: 'Strength', price: 139.99, image: 'velocity-weights.jpg', description: 'Adjustable dumbbells with precision weight increments for efficient strength training sessions.' },
-  { id: 'hydro-bottle', name: 'Hydration Bottle', category: 'Accessories', price: 29.99, image: 'hydro-bottle.jpg', description: 'Insulated sport bottle to keep your water cold during intense workouts and all-day hydration.' },
-  { id: 'performance-watch', name: 'Performance Watch', category: 'Wearables', price: 219.99, image: 'performance-watch.jpg', description: 'Track heart rate, training load, and recovery metrics in a sleek wearable built for athletes.' },
-  { id: 'trainer-gloves', name: 'Trainer Gloves', category: 'Accessories', price: 34.99, image: 'trainer-gloves.jpg', description: 'Breathable lifting gloves with supportive padding and improved grip for heavy sessions.' },
-  { id: 'balance-board', name: 'Balance Board', category: 'Recovery', price: 49.99, image: 'balance-board.jpg', description: 'A dynamic balance board for mobility, joint stability, and active recovery training.' },
-  { id: 'nutri-blender', name: 'Nutri Blender', category: 'Nutrition', price: 84.99, image: 'nutri-blender.jpg', description: 'High-speed blender built to create protein shakes, smoothies, and nutrient-packed recovery drinks.' },
-  { id: 'elite-yoga', name: 'Elite Yoga Set', category: 'Flexibility', price: 69.99, image: 'elite-yoga.jpg', description: 'Complete yoga set including premium mat, blocks, and straps for flexibility and flow training.' },
-  { id: 'kettlebell-pro', name: 'Kettlebell Pro Set', category: 'Strength', price: 159.99, image: 'kettlebell-pro.jpg', description: 'Cast iron kettlebell set with ergonomic handles, ideal for dynamic strength and conditioning workouts.' },
-  { id: 'resistance-band-set', name: 'Resistance Band Set', category: 'Strength', price: 44.99, image: 'resistance-band-set.jpg', description: 'Premium resistance bands in multiple resistance levels for versatile home and gym training.' },
-  { id: 'foam-roller-pro', name: 'Foam Roller Pro', category: 'Recovery', price: 79.99, image: 'foam-roller-pro.jpg', description: 'High-density foam roller with deep muscle tissue release for effective myofascial recovery.' },
-  { id: 'adjustable-bench', name: 'Adjustable Weight Bench', category: 'Strength', price: 249.99, image: 'adjustable-bench.jpg', description: 'Multi-position weight bench with secure adjustment mechanism for targeted chest, back, and leg exercises.' },
-  { id: 'jump-rope-elite', name: 'Elite Jump Rope', category: 'Cardio', price: 39.99, image: 'jump-rope-elite.jpg', description: 'Speed jump rope with weighted handles and ball bearings for fast footwork and cardio conditioning.' },
-  { id: 'suspension-trainer', name: 'Suspension Trainer System', category: 'Strength', price: 129.99, image: 'suspension-trainer.jpg', description: 'Full-body suspension training system using bodyweight for strength, endurance, and functional fitness.' },
-  { id: 'medicine-ball-set', name: 'Medicine Ball Set', category: 'Strength', price: 119.99, image: 'medicine-ball-set.jpg', description: 'Set of weighted medicine balls for explosive power training, core work, and functional movements.' },
-  { id: 'ab-wheel-roller', name: 'Ab Wheel Roller', category: 'Strength', price: 24.99, image: 'ab-wheel-roller.jpg', description: 'Compact ab wheel with ergonomic handles for core strengthening and abdominal muscle development.' },
-  { id: 'stretching-strap', name: 'Premium Stretching Strap', category: 'Flexibility', price: 19.99, image: 'stretching-strap.jpg', description: 'Yoga stretching strap with loops to safely deepen stretches and improve flexibility over time.' }
+    { id: 'power-rack', name: 'Precision Power Rack', category: 'Strength', price: 899.99, image: 'power-rack.jpg', description: 'Heavy-duty power rack designed for serious lifters, with safety catches and adjustable attachments.' },
+    { id: 'smart-bike', name: 'Smart Exercise Bike', category: 'Cardio', price: 999.99, image: 'smart-bike.jpg', description: 'Interactive bike with integrated coaching programs, performance metrics, and ergonomic comfort.' },
+    { id: 'recovery-mat', name: 'Recovery Foam Mat', category: 'Recovery', price: 59.99, image: 'recovery-mat.jpg', description: 'Premium foam mat with supportive cushioning for stretching, yoga, and cool-down recovery routines.' },
+    { id: 'nutrition-kit', name: 'Nutrition Starter Kit', category: 'Nutrition', price: 74.99, image: 'nutrition-kit.jpg', description: 'A curated set of premium supplements to support energy, recovery, and sustained performance.' },
+    { id: 'velocity-weights', name: 'Velocity Dumbbells', category: 'Strength', price: 139.99, image: 'velocity-weights.jpg', description: 'Adjustable dumbbells with precision weight increments for efficient strength training sessions.' },
+    { id: 'hydro-bottle', name: 'Hydration Bottle', category: 'Accessories', price: 29.99, image: 'hydro-bottle.jpg', description: 'Insulated sport bottle to keep your water cold during intense workouts and all-day hydration.' },
+    { id: 'performance-watch', name: 'Performance Watch', category: 'Wearables', price: 219.99, image: 'performance-watch.jpg', description: 'Track heart rate, training load, and recovery metrics in a sleek wearable built for athletes.' },
+    { id: 'trainer-gloves', name: 'Trainer Gloves', category: 'Accessories', price: 34.99, image: 'trainer-gloves.jpg', description: 'Breathable lifting gloves with supportive padding and improved grip for heavy sessions.' },
+    { id: 'balance-board', name: 'Balance Board', category: 'Recovery', price: 49.99, image: 'balance-board.jpg', description: 'A dynamic balance board for mobility, joint stability, and active recovery training.' },
+    { id: 'nutri-blender', name: 'Nutri Blender', category: 'Nutrition', price: 84.99, image: 'nutri-blender.jpg', description: 'High-speed blender built to create protein shakes, smoothies, and nutrient-packed recovery drinks.' },
+    { id: 'elite-yoga', name: 'Elite Yoga Set', category: 'Flexibility', price: 69.99, image: 'elite-yoga.jpg', description: 'Complete yoga set including premium mat, blocks, and straps for flexibility and flow training.' },
+    { id: 'kettlebell-pro', name: 'Kettlebell Pro Set', category: 'Strength', price: 159.99, image: 'kettlebell-pro.jpg', description: 'Cast iron kettlebell set with ergonomic handles, ideal for dynamic strength and conditioning workouts.' },
+    { id: 'resistance-band-set', name: 'Resistance Band Set', category: 'Strength', price: 44.99, image: 'resistance-band-set.jpg', description: 'Premium resistance bands in multiple resistance levels for versatile home and gym training.' },
+    { id: 'foam-roller-pro', name: 'Foam Roller Pro', category: 'Recovery', price: 79.99, image: 'foam-roller-pro.jpg', description: 'High-density foam roller with deep muscle tissue release for effective myofascial recovery.' },
+    { id: 'adjustable-bench', name: 'Adjustable Weight Bench', category: 'Strength', price: 249.99, image: 'adjustable-bench.jpg', description: 'Multi-position weight bench with secure adjustment mechanism for targeted chest, back, and leg exercises.' },
+    { id: 'jump-rope-elite', name: 'Elite Jump Rope', category: 'Cardio', price: 39.99, image: 'jump-rope-elite.jpg', description: 'Speed jump rope with weighted handles and ball bearings for fast footwork and cardio conditioning.' },
+    { id: 'suspension-trainer', name: 'Suspension Trainer System', category: 'Strength', price: 129.99, image: 'suspension-trainer.jpg', description: 'Full-body suspension training system using bodyweight for strength, endurance, and functional fitness.' },
+    { id: 'medicine-ball-set', name: 'Medicine Ball Set', category: 'Strength', price: 119.99, image: 'medicine-ball-set.jpg', description: 'Set of weighted medicine balls for explosive power training, core work, and functional movements.' },
+    { id: 'ab-wheel-roller', name: 'Ab Wheel Roller', category: 'Strength', price: 24.99, image: 'ab-wheel-roller.jpg', description: 'Compact ab wheel with ergonomic handles for core strengthening and abdominal muscle development.' },
+    { id: 'stretching-strap', name: 'Premium Stretching Strap', category: 'Flexibility', price: 19.99, image: 'stretching-strap.jpg', description: 'Yoga stretching strap with loops to safely deepen stretches and improve flexibility over time.' }
 ];
 
 /* CART STORAGE */
@@ -123,7 +123,9 @@ function renderProducts(list = products) {
   initTiltEffects();
 }
 
-/* RENDER FEATURED PRODUCTS (HOME PAGE) */
+/* RENDER FEATURED PRODUCTS */
+
+/* HOME PAGE RENDER */
 function renderFeaturedProducts() {
   const section = document.querySelector('#featured-products');
   if (!section) return;
@@ -431,7 +433,7 @@ document.addEventListener('click', e => {
 
 /* 3D TILT EFFECT (throttled) */
 function initTiltEffects() {
-  const tiltCards = document.querySelectorAll('.product-card, .info-card, .cart-card, .confirm-content, .about-summary');
+  const tiltCards = document.querySelectorAll('.product-card, .info-card, .cart-card, .confirm-content');
 
   tiltCards.forEach(card => {
     card.classList.add('tilt');
@@ -499,11 +501,10 @@ function initIntroVideo() {
   const pauseBtn = document.getElementById('pauseBtn');
   const replayBtn = document.getElementById('replayBtn');
   const skipBtn = document.getElementById('skipIntroBtn');
-  const volumeSlider = document.getElementById('volumeSlider');
   const timelineBar = document.getElementById('timelineBar');
   const container = document.querySelector('.intro-video-container');
 
-  if (!video || !muteBtn || !playBtn || !pauseBtn || !replayBtn || !skipBtn || !volumeSlider || !timelineBar || !container) return;
+  if (!video || !muteBtn || !playBtn || !pauseBtn || !replayBtn || !skipBtn || !timelineBar || !container) return;
 
   video.muted = true;
   muteBtn.setAttribute('aria-label', 'Mute video');
@@ -535,10 +536,6 @@ function initIntroVideo() {
     video.play().catch(() => {});
   });
 
-  volumeSlider.addEventListener('input', () => {
-    video.volume = volumeSlider.value;
-  });
-
   video.addEventListener('timeupdate', () => {
     if (video.duration) {
       const progress = (video.currentTime / video.duration) * 100;
@@ -557,6 +554,11 @@ function initIntroVideo() {
     video.pause();
     video.currentTime = 0;
     video.muted = true;
+
+    video.removeAttribute('src');
+    video.load();
+
+    introSection.style.display = 'none';
   });
 
   [playBtn, pauseBtn, replayBtn].forEach(btn => {

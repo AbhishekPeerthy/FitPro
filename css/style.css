@@ -116,7 +116,9 @@ button.ripple-active::after,
   position: absolute;
   left: -999px;
   top: 0;
-  background: #000;
+  background: rgb(0, 0, 0, 0.25);
+  border: none;
+  backdrop-filter: blur(2px);
   color: #fff;
   padding: 0.5rem 1rem;
   border-radius: 999px;
@@ -270,16 +272,16 @@ header {
   padding: 0.7rem 1.2rem;
   font-size: 0.9rem;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.25);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(6px);
+  border: none;
+  backdrop-filter: blur(2px);
   cursor: pointer;
   transition: all 0.25s ease;
   z-index: 10;
 }
 .skip-intro:hover {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.25);
   transform: translateY(-2px);
 }
 
@@ -308,8 +310,7 @@ header {
   outline-offset: 4px;
 }
 
-/* Sliders */
-.video-slider { width: 110px; accent-color: #00eaff; }
+/* Slider */
 .timeline-slider { width: 160px; accent-color: #00eaff; }
 
 /* PRODUCT GRID */
@@ -546,6 +547,89 @@ footer {
   padding: 0.5rem;
 }
 
+/* PAGE-SPECIFIC LAYOUT COMPONENTS */
+
+/* ABOUT PAGE GRID */
+.overview-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin-top: 2rem;
+}
+
+/* CART PAGE LAYOUT */
+.cart-page {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 320px;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .cart-page {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CHECKOUT PAGE LAYOUT */
+.checkout-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+  .checkout-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* CONTACT FORM LAYOUT */
+.contact-form {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 600px;
+  margin-top: 2rem;
+}
+
+/* FORM FIELD GROUP */
+.field-group {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.required {
+  color: var(--accent);
+}
+
+/* PRODUCT FILTERS */
+.product-filters {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.filter-buttons button.active {
+  background: var(--accent-dark);
+  color: #0a0f1a;
+  border-color: var(--accent);
+}
+
+.sort-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 /* RESPONSIVE */
 @media (min-width: 768px) {
   .hero-grid {
@@ -560,26 +644,59 @@ footer {
     align-items: stretch;
   }
 
+  /* Make video container larger */
+  .intro-video-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem 0;
+    min-height: 360px; /* gives room for controls */
+    position: relative;
+  }
+
+  /* Increase space for controls */
+  .video-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    bottom: 16px;
+    left: 16px;
+    width: calc(100% - 32px);
+    padding: 0.5rem;
+  }
+
+  /* Make emoji buttons bigger */
+  .raw-emoji-btn {
+    font-size: 2rem;
+    padding: 16px;
+    min-width: 56px;
+    min-height: 56px;
+  }
+
+  /* Move Skip Intro button higher on mobile */
+  #skipIntroBtn {
+    bottom: auto;
+    top: 12px;
+    background: transparent !important;
+    border: none;
+    backdrop-filter: none;
+}
+
   .product-card {
     padding: 1.25rem;
   }
 
   .video-controls {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-    left: 8px;
-    bottom: 8px;
+    position: static;
+    margin-top: 1rem;
   }
 
   .raw-emoji-btn {
     font-size: 1.25rem;
   }
 
-  .video-slider,
   .timeline-slider {
-    width: 100%;
-    max-width: 150px;
+    width: 50%;
     height: 18px;
   }
 }
