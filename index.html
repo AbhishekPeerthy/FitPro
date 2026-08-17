@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitPro Market | Home</title>
+
+  <meta name="description" content="FitPro Market is a responsive front-end e-commerce website for premium health and fitness products.">
+  <meta property="og:title" content="FitPro Market">
+  <meta property="og:description" content="Premium health and fitness e-commerce experience.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://abhishekpeerthy.github.io/FitPro/index.html">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="site-title" aria-label="FitPro Market">
+        <span aria-hidden="true">F</span>FitPro Market
+      </a>
+
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list" id="main-navigation">
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="pages/products.html">Products</a></li>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+          <li><a href="pages/cart.html">Cart</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="pages/cart.html" class="cart-indicator" aria-label="Open cart">
+          <span id="cart-count" aria-live="polite">0</span> Cart
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container" id="main-content" tabindex="-1">
+    <h1 class="sr-only">FitPro Market Home</h1>
+
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="section-highlight">High-end Health & Fitness Store</p>
+          <h2 id="hero-heading">Elevate your performance with premium health and fitness essentials.</h2>
+          <p>Find premium fitness gear, recovery essentials, and performance wear backed by a polished, responsive experience.</p>
+
+          <div class="hero-actions">
+            <a href="pages/products.html" class="button">Shop Products</a>
+            <a href="pages/contact.html" class="button">Get in Touch</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-card tilt" tabindex="0">
+            <h3>Fast delivery</h3>
+            <p>Available inventory, quick updates, and an easy checkout flow on every screen size.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-video-container">
+        <video
+          id="introVideo"
+          class="intro-video"
+          src="media/videos/intro.mp4"
+          autoplay
+          playsinline
+          preload="auto"
+        >
+          <track kind="captions" src="media/videos/captions.vtt" srclang="en" label="English">
+        </video>
+
+        <div class="video-controls" aria-label="Video controls">
+          <button id="playBtn" class="raw-emoji-btn" aria-label="Play video">▶</button>
+          <button id="pauseBtn" class="raw-emoji-btn" aria-label="Pause video">❚❚</button>
+          <button id="replayBtn" class="raw-emoji-btn" aria-label="Replay video">↺</button>
+          <button id="muteToggle" class="raw-emoji-btn" aria-label="Mute video">🔇</button>
+          
+          <label for="timelineBar" class="sr-only">Video timeline</label>
+          <input id="timelineBar" type="range" min="0" max="100" value="0" class="timeline-slider" aria-label="Video timeline">
+        </div>
+
+        <button id="skipIntroBtn" class="skip-intro">Skip Intro</button>
+      </div>
+    </section>
+
+    <section class="featured" aria-labelledby="featured-heading">
+      <div class="section-title">
+        <div>
+          <p class="section-highlight">Featured Gear</p>
+          <h2 id="featured-heading">Hot picks for your next session</h2>
+        </div>
+        <p>Curated health and wellness solutions to support rigorous training and recovery.</p>
+      </div>
+
+      <div id="featured-products" class="products-grid"></div>
+    </section>
+
+    <section class="recently-viewed" aria-labelledby="recently-heading">
+      <div class="section-title">
+        <div>
+          <p class="section-highlight">Recently Viewed</p>
+          <h2 id="recently-heading">Continue where you left off</h2>
+        </div>
+        <p>Quick access to products you’ve recently explored.</p>
+      </div>
+
+      <div id="recently-viewed" class="products-grid"></div>
+    </section>
+  </main>
+
+  <div class="popup-modal" aria-hidden="true">
+    <div class="popup-content"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="product-detail-heading"
+         aria-describedby="product-detail-body">
+      <button class="popup-close" aria-label="Close dialog" data-action="close-detail">×</button>
+      <h2 id="product-detail-heading" class="sr-only">Product details</h2>
+      <div id="product-detail-body" class="popup-body"></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="site-title" aria-label="FitPro Market">
+          <span aria-hidden="true">F</span>FitPro Market
+        </a>
+        <p>Premium health and fitness equipment and accessories, delivered in a fast and accessible website.</p>
+      </div>
+
+      <div>
+        <h3>Navigate</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="pages/products.html">Products</a></li>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
